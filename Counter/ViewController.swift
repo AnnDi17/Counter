@@ -30,7 +30,6 @@ class ViewController: UIViewController {
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.black.cgColor
     }
-    //update text for counter
     private func updateValueForButton(_ newValue:Int){
         countLabel.text = "Значение счётчика: " +
         "\(newValue)"
