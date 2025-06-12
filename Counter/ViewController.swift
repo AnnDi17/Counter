@@ -8,12 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var decButton: UIButton!
-    @IBOutlet weak var incButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var historyTextView: UITextView!
+    
+    @IBOutlet weak private var decButton: UIButton!
+    @IBOutlet weak private var incButton: UIButton!
+    @IBOutlet weak private var resetButton: UIButton!
+    @IBOutlet weak private var countLabel: UILabel!
+    @IBOutlet weak private var historyTextView: UITextView!
     private var counter: Int = 0
     private var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     //update text for counter
     private func updateValueForButton(_ newValue:Int){
         countLabel.text = "Значение счётчика: " +
-            "\(newValue)"
+        "\(newValue)"
     }
     //add text to the protocol
     private func updateHistory(_ dateTimeOfChange:Date,_ newText:String){
@@ -40,15 +40,15 @@ class ViewController: UIViewController {
         let range = NSMakeRange(historyTextView.text.count - 1, 1)
         historyTextView.scrollRangeToVisible(range)
     }
-
-    @IBAction func incValue(_ sender: UIButton) {
+    
+    @IBAction private func incValue(_ sender: UIButton) {
         let dateTimeOfChange = Date()
         counter += 1
         updateValueForButton(counter)
         updateHistory (dateTimeOfChange ,"значение изменено на +1")
     }
     
-    @IBAction func decValue(_ sender: UIButton) {
+    @IBAction private func decValue(_ sender: UIButton) {
         let dateTimeOfChange = Date()
         if counter == 0 {
             updateHistory (dateTimeOfChange,"попытка уменьшить значение счётчика ниже 0")
@@ -58,9 +58,9 @@ class ViewController: UIViewController {
             updateValueForButton(counter)
             updateHistory (dateTimeOfChange,"значение изменено на -1")
         }
- 
+        
     }
-    @IBAction func resetCount(_ sender: UIButton) {
+    @IBAction private func resetCount(_ sender: UIButton) {
         let dateTimeOfChange = Date()
         counter = 0
         updateValueForButton(counter)
