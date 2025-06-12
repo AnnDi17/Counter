@@ -15,19 +15,20 @@ class ViewController: UIViewController {
     @IBOutlet weak private var countLabel: UILabel!
     @IBOutlet weak private var historyTextView: UITextView!
     private var counter: Int = 0
-    private var formatter: DateFormatter = {
+    private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH.mm"
         return formatter
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        decButton.layer.borderWidth = 1
-        decButton.layer.borderColor = UIColor.black.cgColor
-        incButton.layer.borderWidth = 1
-        incButton.layer.borderColor = UIColor.black.cgColor
-        resetButton.layer.borderWidth = 1
-        resetButton.layer.borderColor = UIColor.black.cgColor
+        applyBorderStyle(to: decButton)
+        applyBorderStyle(to: incButton)
+        applyBorderStyle(to: resetButton)
+    }
+    private func applyBorderStyle(to button: UIButton) {
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.black.cgColor
     }
     //update text for counter
     private func updateValueForButton(_ newValue:Int){
